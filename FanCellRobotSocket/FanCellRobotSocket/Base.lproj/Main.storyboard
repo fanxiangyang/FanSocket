@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxu-54-oux">
+                                <rect key="frame" x="16" y="76" width="62" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dn6-IY-rkQ"/>
+                                </constraints>
+                                <state key="normal" title="扫描设备"/>
+                                <connections>
+                                    <action selector="scanClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Wi-hZ-3Fi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wfu-X1-eGo">
+                                <rect key="frame" x="123" y="76" width="31" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="xZ5-Uh-X8T"/>
+                                </constraints>
+                                <state key="normal" title="登录"/>
+                                <connections>
+                                    <action selector="loginClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4mt-CO-6zL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FPx-TL-wXZ">
+                                <rect key="frame" x="209" y="76" width="31" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MY8-2B-27W"/>
+                                </constraints>
+                                <state key="normal" title="停止"/>
+                                <connections>
+                                    <action selector="logoutClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UN3-Sn-fQG"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="我们" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mls-AO-1dl">
+                                <rect key="frame" x="16" y="118" width="261" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="FSu-t4-NkQ"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tN3-dP-yWp">
+                                <rect key="frame" x="311" y="118" width="48" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="TaF-sJ-2sH"/>
+                                    <constraint firstAttribute="width" constant="48" id="iUu-9p-hST"/>
+                                </constraints>
+                                <state key="normal" title="发送"/>
+                                <connections>
+                                    <action selector="sendClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AFW-Ap-Qrs"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="778-5U-Igv">
+                                <rect key="frame" x="16" y="173" width="343" height="144"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="144" id="S0D-ZX-phk"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Mhg-Iq-33x">
+                                <rect key="frame" x="16" y="503" width="343" height="144"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="144" id="bza-PM-7Dk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3c-gg-NGg">
+                                <rect key="frame" x="236.5" y="340" width="62" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Teb-9t-R91"/>
+                                </constraints>
+                                <state key="normal" title="发送文件"/>
+                                <connections>
+                                    <action selector="sendFileClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dIc-Rh-xqA"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="192.168.1.96" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mog-Kz-1yD">
+                                <rect key="frame" x="70" y="39" width="111" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="9632" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2UP-Cb-e4L">
+                                <rect key="frame" x="259" y="39" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="主机：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKK-dM-2yD">
+                                <rect key="frame" x="16" y="44" width="52" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="端口：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJw-PW-flM">
+                                <rect key="frame" x="198" y="44" width="52" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ml9-AL-EA0">
+                                <rect key="frame" x="76.5" y="340" width="62" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="xFw-wg-ICU"/>
+                                </constraints>
+                                <state key="normal" title="发送图片"/>
+                                <connections>
+                                    <action selector="sendImgClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0LT-e8-D3d"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exC-Gn-bbc">
+                                <rect key="frame" x="274" y="76" width="31" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8D0-75-PRQ"/>
+                                    <constraint firstAttribute="width" constant="31" id="sdS-Ol-8tN"/>
+                                </constraints>
+                                <state key="normal" title="相机"/>
+                                <connections>
+                                    <action selector="openCamerClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ahK-d1-k8F"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FPx-TL-wXZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="03l-DU-m1o"/>
+                            <constraint firstItem="778-5U-Igv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="2T7-dU-NPd"/>
+                            <constraint firstItem="Mhg-Iq-33x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="4Z5-hB-t2z"/>
+                            <constraint firstItem="S3c-gg-NGg" firstAttribute="top" secondItem="778-5U-Igv" secondAttribute="bottom" constant="23" id="53d-PS-LJq"/>
+                            <constraint firstItem="tN3-dP-yWp" firstAttribute="leading" secondItem="mls-AO-1dl" secondAttribute="trailing" constant="34" id="5gi-6q-Bh5"/>
+                            <constraint firstItem="Ml9-AL-EA0" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="-80" id="9T7-bL-XSE"/>
+                            <constraint firstItem="exC-Gn-bbc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="AKz-bZ-fvE"/>
+                            <constraint firstItem="mls-AO-1dl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Cfl-OG-0hI"/>
+                            <constraint firstItem="dxu-54-oux" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="KVr-Vw-aJ8"/>
+                            <constraint firstItem="Ml9-AL-EA0" firstAttribute="top" secondItem="778-5U-Igv" secondAttribute="bottom" constant="23" id="Mee-R7-3nz"/>
+                            <constraint firstItem="Wfu-X1-eGo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="PWv-s2-Leu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Mhg-Iq-33x" secondAttribute="bottom" constant="20" id="Qwp-l2-07e"/>
+                            <constraint firstItem="Wfu-X1-eGo" firstAttribute="leading" secondItem="dxu-54-oux" secondAttribute="trailing" constant="45" id="YfG-Je-eJt"/>
+                            <constraint firstItem="mls-AO-1dl" firstAttribute="top" secondItem="dxu-54-oux" secondAttribute="bottom" constant="12" id="ZPB-he-viP"/>
+                            <constraint firstItem="dxu-54-oux" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="cH8-wl-LMy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mhg-Iq-33x" secondAttribute="trailing" constant="16" id="fj8-P9-CpO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tN3-dP-yWp" secondAttribute="trailing" constant="16" id="haD-gW-lp0"/>
+                            <constraint firstItem="778-5U-Igv" firstAttribute="top" secondItem="mls-AO-1dl" secondAttribute="bottom" constant="25" id="lzh-Ib-tQA"/>
+                            <constraint firstItem="tN3-dP-yWp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="98" id="qDj-RU-8VY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="778-5U-Igv" secondAttribute="trailing" constant="16" id="sR8-M3-gzX"/>
+                            <constraint firstItem="FPx-TL-wXZ" firstAttribute="leading" secondItem="Wfu-X1-eGo" secondAttribute="trailing" constant="55" id="xc0-S6-IXf"/>
+                            <constraint firstItem="S3c-gg-NGg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="80" id="yXZ-tP-Z78"/>
+                            <constraint firstItem="exC-Gn-bbc" firstAttribute="leading" secondItem="FPx-TL-wXZ" secondAttribute="trailing" constant="34" id="zN1-Le-ung"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="hostTextField" destination="mog-Kz-1yD" id="oaK-Sg-fPw"/>
+                        <outlet property="logTextView" destination="Mhg-Iq-33x" id="VXz-ek-bJH"/>
+                        <outlet property="portTextField" destination="2UP-Cb-e4L" id="P57-vc-IIQ"/>
+                        <outlet property="sendTextField" destination="mls-AO-1dl" id="JYU-X1-SDa"/>
+                        <outlet property="showImageView" destination="778-5U-Igv" id="8B8-Gv-qQ9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="121.88905547226388"/>
+        </scene>
+    </scenes>
+</document>

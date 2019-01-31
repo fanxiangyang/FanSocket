@@ -1,0 +1,720 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6658279B21BA564F003A4795 /* FanToolBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 6658279A21BA564F003A4795 /* FanToolBox.m */; };
+		6658279E21BA5763003A4795 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6658279D21BA5763003A4795 /* SystemConfiguration.framework */; };
+		6680C9FB20A686960081CA91 /* FanSocketC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6680C9FA20A686960081CA91 /* FanSocketC.m */; };
+		6680C9FE20A6870F0081CA91 /* FanSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6680C9FD20A6870F0081CA91 /* FanSocketManager.m */; };
+		66816BC120A29AC700A049AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66816BC020A29AC700A049AD /* AppDelegate.m */; };
+		66816BC420A29AC700A049AD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66816BC320A29AC700A049AD /* ViewController.m */; };
+		66816BC620A29AC800A049AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66816BC520A29AC800A049AD /* Assets.xcassets */; };
+		66816BC920A29AC800A049AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66816BC720A29AC800A049AD /* Main.storyboard */; };
+		66816BCC20A29AC800A049AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66816BCB20A29AC800A049AD /* main.m */; };
+		66816BD720A29AC800A049AD /* FanServerSocketTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66816BD620A29AC800A049AD /* FanServerSocketTests.m */; };
+		66816BE220A29AC800A049AD /* FanServerSocketUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66816BE120A29AC800A049AD /* FanServerSocketUITests.m */; };
+		66816BF520A29B9600A049AD /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 66816BF020A29B9600A049AD /* Documentation.html */; };
+		66816BFE20A2FC4F00A049AD /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 66816BFA20A2FC4F00A049AD /* GCDAsyncSocket.m */; };
+		66816BFF20A2FC4F00A049AD /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 66816BFC20A2FC4F00A049AD /* GCDAsyncUdpSocket.m */; };
+		668ACDA320B94E270083A1B9 /* FanAACEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ACD9420B94E260083A1B9 /* FanAACEncoder.m */; };
+		668ACDA520B94E270083A1B9 /* FanFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ACD9820B94E260083A1B9 /* FanFileHandle.m */; };
+		668ACDA620B94E270083A1B9 /* FanAACPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ACD9A20B94E260083A1B9 /* FanAACPlayer.m */; };
+		668ACDA820B94E270083A1B9 /* FanDecoderH264.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ACD9D20B94E260083A1B9 /* FanDecoderH264.m */; };
+		668ACDAA20B94E270083A1B9 /* FanEncoderH264.m in Sources */ = {isa = PBXBuildFile; fileRef = 668ACDA120B94E260083A1B9 /* FanEncoderH264.m */; };
+		66A5B21820B2E141005F8943 /* FanUdpSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A5B21720B2E141005F8943 /* FanUdpSocketManager.m */; };
+		66E8775220A924C9006D97D8 /* FanUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E8775120A924C9006D97D8 /* FanUserModel.m */; };
+		66E8775B20AA87F8006D97D8 /* FanDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E8775920AA87F8006D97D8 /* FanDataTool.m */; };
+		66E8776420AC384C006D97D8 /* sizu.xml in Resources */ = {isa = PBXBuildFile; fileRef = 66E8776220AC384C006D97D8 /* sizu.xml */; };
+		66E8776520AC384C006D97D8 /* hua.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 66E8776320AC384C006D97D8 /* hua.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		66816BD320A29AC800A049AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66816BB420A29AC700A049AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66816BBB20A29AC700A049AD;
+			remoteInfo = FanServerSocket;
+		};
+		66816BDE20A29AC800A049AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66816BB420A29AC700A049AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66816BBB20A29AC700A049AD;
+			remoteInfo = FanServerSocket;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6658279921BA564F003A4795 /* FanToolBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FanToolBox.h; sourceTree = "<group>"; };
+		6658279A21BA564F003A4795 /* FanToolBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FanToolBox.m; sourceTree = "<group>"; };
+		6658279D21BA5763003A4795 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6680C9F920A686960081CA91 /* FanSocketC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FanSocketC.h; sourceTree = "<group>"; };
+		6680C9FA20A686960081CA91 /* FanSocketC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FanSocketC.m; sourceTree = "<group>"; };
+		6680C9FC20A6870F0081CA91 /* FanSocketManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FanSocketManager.h; sourceTree = "<group>"; };
+		6680C9FD20A6870F0081CA91 /* FanSocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FanSocketManager.m; sourceTree = "<group>"; };
+		66816BBC20A29AC700A049AD /* FanServerSocket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanServerSocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66816BBF20A29AC700A049AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		66816BC020A29AC700A049AD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		66816BC220A29AC700A049AD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		66816BC320A29AC700A049AD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		66816BC520A29AC800A049AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		66816BC820A29AC800A049AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		66816BCA20A29AC800A049AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66816BCB20A29AC800A049AD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		66816BCD20A29AC800A049AD /* FanServerSocket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FanServerSocket.entitlements; sourceTree = "<group>"; };
+		66816BD220A29AC800A049AD /* FanServerSocketTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FanServerSocketTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		66816BD620A29AC800A049AD /* FanServerSocketTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FanServerSocketTests.m; sourceTree = "<group>"; };
+		66816BD820A29AC800A049AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66816BDD20A29AC800A049AD /* FanServerSocketUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FanServerSocketUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		66816BE120A29AC800A049AD /* FanServerSocketUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FanServerSocketUITests.m; sourceTree = "<group>"; };
+		66816BE320A29AC800A049AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66816BF020A29B9600A049AD /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
+		66816BFA20A2FC4F00A049AD /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		66816BFB20A2FC4F00A049AD /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		66816BFC20A2FC4F00A049AD /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		66816BFD20A2FC4F00A049AD /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		668ACD9320B94E260083A1B9 /* FanAACPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FanAACPlayer.h; sourceTree = "<group>"; };
+		668ACD9420B94E260083A1B9 /* FanAACEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FanAACEncoder.m; sourceTree = "<group>"; };
+		668ACD9620B94E260083A1B9 /* FanDecoderH264.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FanDecoderH264.h; sourceTree = "<group>"; };
+		668ACD9720B94E260083A1B9 /* FanEncoderH264.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FanEncoderH264.h; sourceTree = "<group>"; };
+		668ACD9820B94E260083A1B9 /* FanFileHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FanFileHandle.m; sourceTree = "<group>"; };
+		668ACD9A20B94E260083A1B9 /* FanAACPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FanAACPlayer.m; sourceTree = "<group>"; };
+		668ACD9D20B94E260083A1B9 /* FanDecoderH264.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FanDecoderH264.m; sourceTree = "<group>"; };
+		668ACD9E20B94E260083A1B9 /* FanAACEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FanAACEncoder.h; sourceTree = "<group>"; };
+		668ACDA020B94E260083A1B9 /* FanFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FanFileHandle.h; sourceTree = "<group>"; };
+		668ACDA120B94E260083A1B9 /* FanEncoderH264.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FanEncoderH264.m; sourceTree = "<group>"; };
+		66A5B21620B2E141005F8943 /* FanUdpSocketManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FanUdpSocketManager.h; sourceTree = "<group>"; };
+		66A5B21720B2E141005F8943 /* FanUdpSocketManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FanUdpSocketManager.m; sourceTree = "<group>"; };
+		66E8775020A924C9006D97D8 /* FanUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FanUserModel.h; sourceTree = "<group>"; };
+		66E8775120A924C9006D97D8 /* FanUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FanUserModel.m; sourceTree = "<group>"; };
+		66E8775920AA87F8006D97D8 /* FanDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FanDataTool.m; sourceTree = "<group>"; };
+		66E8775A20AA87F8006D97D8 /* FanDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FanDataTool.h; sourceTree = "<group>"; };
+		66E8776220AC384C006D97D8 /* sizu.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sizu.xml; sourceTree = "<group>"; };
+		66E8776320AC384C006D97D8 /* hua.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hua.jpg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		66816BB920A29AC700A049AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6658279E21BA5763003A4795 /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66816BCF20A29AC800A049AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66816BDA20A29AC800A049AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6658279C21BA5763003A4795 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6658279D21BA5763003A4795 /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6680C9F820A6866C0081CA91 /* FanSocketManager */ = {
+			isa = PBXGroup;
+			children = (
+				6658279921BA564F003A4795 /* FanToolBox.h */,
+				6658279A21BA564F003A4795 /* FanToolBox.m */,
+				66E8775A20AA87F8006D97D8 /* FanDataTool.h */,
+				66E8775920AA87F8006D97D8 /* FanDataTool.m */,
+				6680C9F920A686960081CA91 /* FanSocketC.h */,
+				6680C9FA20A686960081CA91 /* FanSocketC.m */,
+				6680C9FC20A6870F0081CA91 /* FanSocketManager.h */,
+				6680C9FD20A6870F0081CA91 /* FanSocketManager.m */,
+				66A5B21620B2E141005F8943 /* FanUdpSocketManager.h */,
+				66A5B21720B2E141005F8943 /* FanUdpSocketManager.m */,
+				66E8775020A924C9006D97D8 /* FanUserModel.h */,
+				66E8775120A924C9006D97D8 /* FanUserModel.m */,
+			);
+			path = FanSocketManager;
+			sourceTree = "<group>";
+		};
+		66816BB320A29AC700A049AD = {
+			isa = PBXGroup;
+			children = (
+				66816BBE20A29AC700A049AD /* FanServerSocket */,
+				66816BD520A29AC800A049AD /* FanServerSocketTests */,
+				66816BE020A29AC800A049AD /* FanServerSocketUITests */,
+				66816BBD20A29AC700A049AD /* Products */,
+				6658279C21BA5763003A4795 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		66816BBD20A29AC700A049AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				66816BBC20A29AC700A049AD /* FanServerSocket.app */,
+				66816BD220A29AC800A049AD /* FanServerSocketTests.xctest */,
+				66816BDD20A29AC800A049AD /* FanServerSocketUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		66816BBE20A29AC700A049AD /* FanServerSocket */ = {
+			isa = PBXGroup;
+			children = (
+				668ACD9120B94E260083A1B9 /* FanVideoManager */,
+				66E8776120AC384C006D97D8 /* Resources */,
+				6680C9F820A6866C0081CA91 /* FanSocketManager */,
+				66816BEF20A29B9600A049AD /* CocoaAsyncSocket */,
+				66816BBF20A29AC700A049AD /* AppDelegate.h */,
+				66816BC020A29AC700A049AD /* AppDelegate.m */,
+				66816BC220A29AC700A049AD /* ViewController.h */,
+				66816BC320A29AC700A049AD /* ViewController.m */,
+				66816BC520A29AC800A049AD /* Assets.xcassets */,
+				66816BC720A29AC800A049AD /* Main.storyboard */,
+				66816BCA20A29AC800A049AD /* Info.plist */,
+				66816BCB20A29AC800A049AD /* main.m */,
+				66816BCD20A29AC800A049AD /* FanServerSocket.entitlements */,
+			);
+			path = FanServerSocket;
+			sourceTree = "<group>";
+		};
+		66816BD520A29AC800A049AD /* FanServerSocketTests */ = {
+			isa = PBXGroup;
+			children = (
+				66816BD620A29AC800A049AD /* FanServerSocketTests.m */,
+				66816BD820A29AC800A049AD /* Info.plist */,
+			);
+			path = FanServerSocketTests;
+			sourceTree = "<group>";
+		};
+		66816BE020A29AC800A049AD /* FanServerSocketUITests */ = {
+			isa = PBXGroup;
+			children = (
+				66816BE120A29AC800A049AD /* FanServerSocketUITests.m */,
+				66816BE320A29AC800A049AD /* Info.plist */,
+			);
+			path = FanServerSocketUITests;
+			sourceTree = "<group>";
+		};
+		66816BEF20A29B9600A049AD /* CocoaAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				66816BFD20A2FC4F00A049AD /* GCDAsyncSocket.h */,
+				66816BFA20A2FC4F00A049AD /* GCDAsyncSocket.m */,
+				66816BFB20A2FC4F00A049AD /* GCDAsyncUdpSocket.h */,
+				66816BFC20A2FC4F00A049AD /* GCDAsyncUdpSocket.m */,
+				66816BF020A29B9600A049AD /* Documentation.html */,
+			);
+			path = CocoaAsyncSocket;
+			sourceTree = "<group>";
+		};
+		668ACD9120B94E260083A1B9 /* FanVideoManager */ = {
+			isa = PBXGroup;
+			children = (
+				668ACD9E20B94E260083A1B9 /* FanAACEncoder.h */,
+				668ACD9420B94E260083A1B9 /* FanAACEncoder.m */,
+				668ACD9320B94E260083A1B9 /* FanAACPlayer.h */,
+				668ACD9A20B94E260083A1B9 /* FanAACPlayer.m */,
+				668ACD9620B94E260083A1B9 /* FanDecoderH264.h */,
+				668ACD9D20B94E260083A1B9 /* FanDecoderH264.m */,
+				668ACD9720B94E260083A1B9 /* FanEncoderH264.h */,
+				668ACDA120B94E260083A1B9 /* FanEncoderH264.m */,
+				668ACDA020B94E260083A1B9 /* FanFileHandle.h */,
+				668ACD9820B94E260083A1B9 /* FanFileHandle.m */,
+			);
+			path = FanVideoManager;
+			sourceTree = "<group>";
+		};
+		66E8776120AC384C006D97D8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				66E8776220AC384C006D97D8 /* sizu.xml */,
+				66E8776320AC384C006D97D8 /* hua.jpg */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		66816BBB20A29AC700A049AD /* FanServerSocket */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66816BE620A29AC800A049AD /* Build configuration list for PBXNativeTarget "FanServerSocket" */;
+			buildPhases = (
+				66816BB820A29AC700A049AD /* Sources */,
+				66816BB920A29AC700A049AD /* Frameworks */,
+				66816BBA20A29AC700A049AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FanServerSocket;
+			productName = FanServerSocket;
+			productReference = 66816BBC20A29AC700A049AD /* FanServerSocket.app */;
+			productType = "com.apple.product-type.application";
+		};
+		66816BD120A29AC800A049AD /* FanServerSocketTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66816BE920A29AC800A049AD /* Build configuration list for PBXNativeTarget "FanServerSocketTests" */;
+			buildPhases = (
+				66816BCE20A29AC800A049AD /* Sources */,
+				66816BCF20A29AC800A049AD /* Frameworks */,
+				66816BD020A29AC800A049AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66816BD420A29AC800A049AD /* PBXTargetDependency */,
+			);
+			name = FanServerSocketTests;
+			productName = FanServerSocketTests;
+			productReference = 66816BD220A29AC800A049AD /* FanServerSocketTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		66816BDC20A29AC800A049AD /* FanServerSocketUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66816BEC20A29AC800A049AD /* Build configuration list for PBXNativeTarget "FanServerSocketUITests" */;
+			buildPhases = (
+				66816BD920A29AC800A049AD /* Sources */,
+				66816BDA20A29AC800A049AD /* Frameworks */,
+				66816BDB20A29AC800A049AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66816BDF20A29AC800A049AD /* PBXTargetDependency */,
+			);
+			name = FanServerSocketUITests;
+			productName = FanServerSocketUITests;
+			productReference = 66816BDD20A29AC800A049AD /* FanServerSocketUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		66816BB420A29AC700A049AD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "向阳凡";
+				TargetAttributes = {
+					66816BBB20A29AC700A049AD = {
+						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+					66816BD120A29AC800A049AD = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 66816BBB20A29AC700A049AD;
+					};
+					66816BDC20A29AC800A049AD = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 66816BBB20A29AC700A049AD;
+					};
+				};
+			};
+			buildConfigurationList = 66816BB720A29AC700A049AD /* Build configuration list for PBXProject "FanServerSocket" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 66816BB320A29AC700A049AD;
+			productRefGroup = 66816BBD20A29AC700A049AD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				66816BBB20A29AC700A049AD /* FanServerSocket */,
+				66816BD120A29AC800A049AD /* FanServerSocketTests */,
+				66816BDC20A29AC800A049AD /* FanServerSocketUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		66816BBA20A29AC700A049AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66816BC620A29AC800A049AD /* Assets.xcassets in Resources */,
+				66816BF520A29B9600A049AD /* Documentation.html in Resources */,
+				66E8776420AC384C006D97D8 /* sizu.xml in Resources */,
+				66816BC920A29AC800A049AD /* Main.storyboard in Resources */,
+				66E8776520AC384C006D97D8 /* hua.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66816BD020A29AC800A049AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66816BDB20A29AC800A049AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		66816BB820A29AC700A049AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				668ACDA820B94E270083A1B9 /* FanDecoderH264.m in Sources */,
+				6680C9FE20A6870F0081CA91 /* FanSocketManager.m in Sources */,
+				6680C9FB20A686960081CA91 /* FanSocketC.m in Sources */,
+				6658279B21BA564F003A4795 /* FanToolBox.m in Sources */,
+				66816BFE20A2FC4F00A049AD /* GCDAsyncSocket.m in Sources */,
+				66816BFF20A2FC4F00A049AD /* GCDAsyncUdpSocket.m in Sources */,
+				66A5B21820B2E141005F8943 /* FanUdpSocketManager.m in Sources */,
+				66816BC420A29AC700A049AD /* ViewController.m in Sources */,
+				668ACDA620B94E270083A1B9 /* FanAACPlayer.m in Sources */,
+				66816BCC20A29AC800A049AD /* main.m in Sources */,
+				66E8775B20AA87F8006D97D8 /* FanDataTool.m in Sources */,
+				668ACDA320B94E270083A1B9 /* FanAACEncoder.m in Sources */,
+				66E8775220A924C9006D97D8 /* FanUserModel.m in Sources */,
+				668ACDAA20B94E270083A1B9 /* FanEncoderH264.m in Sources */,
+				668ACDA520B94E270083A1B9 /* FanFileHandle.m in Sources */,
+				66816BC120A29AC700A049AD /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66816BCE20A29AC800A049AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66816BD720A29AC800A049AD /* FanServerSocketTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66816BD920A29AC800A049AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66816BE220A29AC800A049AD /* FanServerSocketUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		66816BD420A29AC800A049AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66816BBB20A29AC700A049AD /* FanServerSocket */;
+			targetProxy = 66816BD320A29AC800A049AD /* PBXContainerItemProxy */;
+		};
+		66816BDF20A29AC800A049AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66816BBB20A29AC700A049AD /* FanServerSocket */;
+			targetProxy = 66816BDE20A29AC800A049AD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		66816BC720A29AC800A049AD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66816BC820A29AC800A049AD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		66816BE420A29AC800A049AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		66816BE520A29AC800A049AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		66816BE720A29AC800A049AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NW3X9NZ9UP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FanServerSocket/CocoaAsyncSocket",
+				);
+				INFOPLIST_FILE = FanServerSocket/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fan.FanServerSocket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		66816BE820A29AC800A049AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NW3X9NZ9UP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FanServerSocket/CocoaAsyncSocket",
+				);
+				INFOPLIST_FILE = FanServerSocket/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fan.FanServerSocket;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		66816BEA20A29AC800A049AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NW3X9NZ9UP;
+				INFOPLIST_FILE = FanServerSocketTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fan.FanServerSocketTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FanServerSocket.app/Contents/MacOS/FanServerSocket";
+			};
+			name = Debug;
+		};
+		66816BEB20A29AC800A049AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NW3X9NZ9UP;
+				INFOPLIST_FILE = FanServerSocketTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fan.FanServerSocketTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FanServerSocket.app/Contents/MacOS/FanServerSocket";
+			};
+			name = Release;
+		};
+		66816BED20A29AC800A049AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NW3X9NZ9UP;
+				INFOPLIST_FILE = FanServerSocketUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fan.FanServerSocketUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FanServerSocket;
+			};
+			name = Debug;
+		};
+		66816BEE20A29AC800A049AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = NW3X9NZ9UP;
+				INFOPLIST_FILE = FanServerSocketUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fan.FanServerSocketUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FanServerSocket;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		66816BB720A29AC700A049AD /* Build configuration list for PBXProject "FanServerSocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66816BE420A29AC800A049AD /* Debug */,
+				66816BE520A29AC800A049AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66816BE620A29AC800A049AD /* Build configuration list for PBXNativeTarget "FanServerSocket" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66816BE720A29AC800A049AD /* Debug */,
+				66816BE820A29AC800A049AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66816BE920A29AC800A049AD /* Build configuration list for PBXNativeTarget "FanServerSocketTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66816BEA20A29AC800A049AD /* Debug */,
+				66816BEB20A29AC800A049AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66816BEC20A29AC800A049AD /* Build configuration list for PBXNativeTarget "FanServerSocketUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66816BED20A29AC800A049AD /* Debug */,
+				66816BEE20A29AC800A049AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 66816BB420A29AC700A049AD /* Project object */;
+}
