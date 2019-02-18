@@ -9,13 +9,14 @@
 #include "FanSocketC.h"
 
 
-int fan_isPack=1;//是否是一个完整包
+int fan_isPack=1;//是否是一个完整包 -1=头不全 0=body不全 1=完整包
 //服务器描述符(默认<=0)+临时客户端
 int server_socket;//服务器socket ID
 int client_socket;//只能连接一个的时候，做判断
 int client_sockfd[FD_SETSIZE];//客户端数组
 int fan_port=9632;//端口号
-
+char fan_buffer_head[8];//处理头不全时缓存头
+int fan_buffer_head_length=0;//处理头不全时缓存头长度
 //int fan_connected=0;//断开服务器
 //FanMessage *fan_message=NULL;
 //用来处理每包数据
@@ -222,6 +223,9 @@ int fan_stopSocketServer(){
     }
     server_socket=-1;
     client_socket=-1;
+    fan_isPack=1;
+    fan_buffer_head_length=0;
+    memset(fan_buffer_head, 0, 8);//初始化socket
     return 1;
 }
 #pragma mark - 接收客户端信息，处理业务逻辑
@@ -241,11 +245,11 @@ void* fan_recvMessage(int *fd)
         //    memset(recv_msg , 0 , 1024);
         bzero(recv_msg, FAN_PACKSIZE);
         
-        printf("客户端【%d】开始接收数据\n",sockfd);
+//        printf("客户端【%d】开始接收数据\n",sockfd);
         
         //接收用户发送的消息
         long byte_num  = recv(sockfd , recv_msg , sizeof(recv_msg), 0);
-        printf("接收长度:%ld\n",byte_num);
+//        printf("接收长度:%ld\n",byte_num);
         if(byte_num <= 0)
         {
             //关闭当前描述符，并清空描述符数组
@@ -280,8 +284,45 @@ void* fan_recvMessage(int *fd)
 
 void fan_analysisMessage(char *recv_msg,int byte_num){
 //    printf("||||||||:%s\n",recv_msg+8);
-
-    if (fan_isPack==1) {
+    if (fan_isPack==-1) {
+        int current_length=8-fan_buffer_head_length;
+        if (byte_num>=current_length) {
+            memcpy(fan_buffer_head+fan_buffer_head_length, recv_msg, current_length);
+            fan_getMessageHead(fan_buffer_head);
+            memset(fan_buffer_head, 0, 8);
+            fan_buffer_head_length=0;
+            if (fan_message.length==byte_num-current_length) {
+                //有body数据
+                if(byte_num>current_length){
+                    fan_getMessageBody(recv_msg+current_length, 0,byte_num-current_length);
+                }
+                //完整包
+                fan_isPack=1;
+                fan_getMessage();
+                
+            }else if(fan_message.length<byte_num-current_length){
+                //超过一个完整包
+                fan_getMessageBody(recv_msg+current_length, 0,fan_message.length);
+                //完整包
+                int l=fan_message.length;
+                fan_isPack=1;
+                fan_getMessage();
+                //递归循环
+                fan_analysisMessage(recv_msg+current_length+l, byte_num-current_length-l);
+                
+            }else if(fan_message.length>byte_num-current_length){
+                fan_isPack=0;
+                //不够一包
+                fan_getMessageBody(recv_msg+current_length, 0,byte_num-current_length);
+            }
+        }else{
+            memcpy(fan_buffer_head+fan_buffer_head_length, recv_msg, byte_num);
+            fan_buffer_head_length+=byte_num;
+        }
+        
+        
+        
+    }else if (fan_isPack==1) {
         if (byte_num>=8) {
             char head[8];
             memcpy(head, recv_msg, 8);
@@ -313,8 +354,12 @@ void fan_analysisMessage(char *recv_msg,int byte_num){
             }
         }else {
             //数据包错误(如果出现这个错误，我就要弄一个全局的存起来)
-            printf("---------数据包错误----------");
-            exit(-1);
+//            printf("---------数据包头不完整----------\n");
+//            exit(-1);
+            memset(fan_buffer_head, 0, 8);
+            memcpy(fan_buffer_head, recv_msg, byte_num);
+            fan_buffer_head_length=byte_num;
+            fan_isPack=-1;
         }
     }else{
         int st=fan_message.length-fan_message.clength;
@@ -362,7 +407,8 @@ void fan_getMessage(void){
     //发送一包给线程队列
     
     message->data[message->length]='\0';
-    printf("解析接收Body[%d]:%s\n",message->length,message->data);
+    printf("Head:%d,length=%d\n",message->type,message->length);
+    printf("Body:%s\n",message->data);
     
     if (message->type<1000) {
         //直接执行，跳转另外一个函数执行
@@ -463,7 +509,7 @@ void * test2(FanMessage *message){
         //清空所有
         return NULL;
     }
-    
+
     printf("发送给下位机:%s\n",message->data);
 
     //等待3秒后，重新开启下一个
@@ -475,7 +521,7 @@ void * test2(FanMessage *message){
 
 
     printf("等待3秒后或者下位机返回数据了发送下一条\n");
-    
+
     //线程停止时会自动释放资源，不需要手动处理
     free(message->data);
     free(message);

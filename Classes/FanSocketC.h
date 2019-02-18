@@ -47,7 +47,7 @@ void fan_getMessage(void);
 void  fan_recvMessageNow(FanMessage *message);
 
 
-void fan_test();
+void fan_test(void);
 void * test1(int *a);
 void * test2(FanMessage *message);
 #endif /* FanSocketC_h */

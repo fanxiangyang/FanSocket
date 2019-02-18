@@ -105,9 +105,12 @@
         NSString *msg=[NSString stringWithFormat:@"我们%d！",i];
         [[FanSocketManager defaultManager]sendMessage:msg];
 
-//        [[FanSocketManager defaultManager]sendMessage:@"我们"];
+
 //        [[FanSocketManager defaultManager]sendMessage:message];
     }
+//    Byte turn[]={0x00,0x00,0x00,0x00};
+//
+//    [[FanSocketManager defaultManager].localSocket writeData:[NSData dataWithBytes:turn length:4] withTimeout:-1 tag:12];
 
 }
 - (IBAction)sendImgClick:(id)sender {
