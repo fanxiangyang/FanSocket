@@ -59,9 +59,9 @@ typedef NS_ENUM(UInt16,UdpSocketType){
 
 -(void)clear;
 
-
+-(UdpSocketModel *)copyModel;
 //初始化解析数据包
--(void)configWithData:(NSData *)data;
+-(BOOL)configWithData:(NSData *)data;
 ///发送数据的拼接形式
 -(NSData *)getData;
 ///只发送含一包数据的文本形式

@@ -51,7 +51,7 @@ typedef NS_ENUM(UInt16,UdpSocketType){
 @property(nonatomic,assign)UInt16 index;//下标
 @property(nonatomic,strong)NSMutableData *data;
 
-
+-(UdpSocketModel *)copyModel;
 //解析出来的字符串数据
 @property(nonatomic,copy)NSString *message;//文本信息UTF8编码
 @property(nonatomic,assign)BOOL isComplete;//一包数据是否完整切拼包完成
@@ -61,7 +61,7 @@ typedef NS_ENUM(UInt16,UdpSocketType){
 
 
 //初始化解析数据包
--(void)configWithData:(NSData *)data;
+-(BOOL)configWithData:(NSData *)data;
 ///发送数据的拼接形式
 -(NSData *)getData;
 ///只发送含一包数据的文本形式

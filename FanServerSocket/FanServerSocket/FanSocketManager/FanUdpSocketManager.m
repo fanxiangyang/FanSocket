@@ -13,24 +13,35 @@
 
 @implementation UdpSocketModel
 
--(void)configWithData:(NSData *)data{
+-(BOOL)configWithData:(NSData *)data{
+    if (data.length<10) {
+        //不够一包数据
+        return NO;
+    }
     _type=(UInt16)[FanDataTool fan_unpack_int16:[data subdataWithRange:NSMakeRange(0, 2)]bigEndian:NO];
     _length=(UInt16)[FanDataTool fan_unpack_int16:[data subdataWithRange:NSMakeRange(2, 2)]bigEndian:NO];
     _total=(UInt16)[FanDataTool fan_unpack_int16:[data subdataWithRange:NSMakeRange(4, 2)]bigEndian:NO];
     _page=(UInt16)[FanDataTool fan_unpack_int16:[data subdataWithRange:NSMakeRange(6, 2)]bigEndian:NO];
     _index=(UInt16)[FanDataTool fan_unpack_int16:[data subdataWithRange:NSMakeRange(8, 2)]bigEndian:NO];
+    if (data.length-10!=_length) {
+        //数据包不完整
+        return NO;
+    }
     if (_total==0) {
         //不分页
         _data=[[NSMutableData alloc]init];
-        [_data appendData:[data subdataWithRange:NSMakeRange(8, data.length-8)]];
+        [_data appendData:[data subdataWithRange:NSMakeRange(10, data.length-10)]];
         _isComplete=YES;
     }else{
         if (_page==1) {
             _isComplete=NO;
             _data=[[NSMutableData alloc]init];
-            [_data appendData:[data subdataWithRange:NSMakeRange(8, data.length-8)]];
+            [_data appendData:[data subdataWithRange:NSMakeRange(10, data.length-10)]];
         }else{
-            [_data appendData:[data subdataWithRange:NSMakeRange(8, data.length-8)]];
+            if (_data==nil) {
+                _data=[[NSMutableData alloc]init];
+            }
+            [_data appendData:[data subdataWithRange:NSMakeRange(10, data.length-10)]];
         }
         if (_page==_total) {
             //最后一页，
@@ -44,6 +55,7 @@
         }
     }
     
+    return YES;
 }
 -(void)clear{
     _type=0;
@@ -53,6 +65,17 @@
     _index=0;
     _data=nil;
     _message=nil;
+}
+-(UdpSocketModel *)copyModel{
+    UdpSocketModel *model=[[UdpSocketModel alloc]init];
+    model.type=_type;
+    model.length=_length;
+    model.total=_total;
+    model.page=_page;
+    model.index=_index;
+    model.data=[_data copy];
+    model.message=[_message copy];
+    return model;
 }
 -(NSData *)getData{
     NSMutableData *data=[[NSMutableData alloc]init];
@@ -222,10 +245,11 @@
     
     
     NSLog(@"收到UDP的数据: [%@:%d] leng=%ld", ip, port,data.length);
-    [_socketModel configWithData:data];
-    if (_socketModel.isComplete) {
-        //完整包
-        [self analysis:_socketModel];
+    if([_socketModel configWithData:data]){
+        if (_socketModel.isComplete) {
+            //完整包
+            [self analysis:[_socketModel copyModel]];
+        }
     }
     // 继续来等待接收下一次消息
     [sock receiveOnce:nil];//这个是只接收一条
