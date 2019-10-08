@@ -301,11 +301,11 @@
         if (_socketModel.type==0) {
             [self socketLog:[NSString stringWithFormat:@"接收Body:%@",_socketModel.message]];
         }else{
-            NSLog(@"接收文件数据包！");
+//            NSLog(@"接收文件数据包！");
         }
-        
-        NSLog(@"接收：%@",_socketModel.data);
-
+        if(_debugLog){
+            NSLog(@"接收：%@",_socketModel.data);
+        }
     }
 
 }
@@ -376,7 +376,8 @@
         case 1000:
         {
             //Data
-            [self receiveDataFile];
+//            [self receiveDataFile];
+            return;
         }
             break;
             
@@ -389,9 +390,23 @@
         }
     });
 }
+NSTimeInterval timeInterval1=0.0f;
+
+-(void)testReceiveData{
+    NSTimeInterval tv=[NSDate timeIntervalSinceReferenceDate];
+    NSLog(@"%f",tv-timeInterval1);
+    timeInterval1=tv;
+    return;
+//    [self sendCommandSocketType:1100 socket:_clientArray[0]];
+
+}
 -(void)receiveDataFile{
-     NSString *path=@"/Users/fanxiangyang/Desktop/Temp/a.data";
-    [_socketModel.data writeToFile:path atomically:YES];
+    if(_socketModel.command==1100){
+        [self testReceiveData];
+    }else{
+        NSString *path=@"/Users/fanxiangyang/Desktop/Temp/a.data";
+        [_socketModel.data writeToFile:path atomically:YES];
+    }
 }
 
 -(void)receiveFile{

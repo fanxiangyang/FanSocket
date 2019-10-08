@@ -7,13 +7,13 @@
 //
 
 #import "FanUdpSocketManager.h"
-#import "FanFileHandle.h"
-#import "FanAACPlayer.h"
+//#import "FanFileHandle.h"
+//#import "FanAACPlayer.h"
 #import "FanToolBox.h"
 
 @implementation UdpSocketModel
 
--(BOOL)configWithData:(NSData *)data{
+-(BOOL)configWithData:(NSData *)data address:(NSString*)address{
     if (data.length<10) {
         //不够一包数据
         return NO;
@@ -55,8 +55,11 @@
         }
     }
     
+    _address=address;
+    
     return YES;
 }
+
 -(void)clear{
     _type=0;
     _length=0;
@@ -65,6 +68,9 @@
     _index=0;
     _data=nil;
     _message=nil;
+    _address=@"";
+    _ipAddress=@"";
+    _port=0;
 }
 -(UdpSocketModel *)copyModel{
     UdpSocketModel *model=[[UdpSocketModel alloc]init];
@@ -75,6 +81,9 @@
     model.index=_index;
     model.data=[_data copy];
     model.message=[_message copy];
+    model.address=[_address copy];
+    model.ipAddress=[_ipAddress copy];
+    model.port=_port;
     return model;
 }
 -(NSData *)getData{
@@ -89,7 +98,7 @@
     }else if(_message){
         [data appendData:[_message dataUsingEncoding:NSUTF8StringEncoding]];
     }else{
-        NSLog(@"UDP数据包不完整或为空！");
+        //        NSLog(@"UDP数据包不完整或为空！");
     }
     return data;
 }
@@ -109,8 +118,8 @@
 }
 @end
 @implementation FanUdpSocketManager{
-    FanFileHandle *fanFileHandle;
-    FanAACPlayer *_aacPlayer;
+    //    FanFileHandle *fanFileHandle;
+    //    FanAACPlayer *_aacPlayer;
 }
 
 +(instancetype)defaultManager{
@@ -137,10 +146,13 @@
 
 
 -(void)startUdpSocket{
+    if (_localUdpSocket.isClosed==NO) {
+        return;
+    }
     //2.banding一个端口(可选),如果不绑定端口, 那么就会随机产生一个随机的电脑唯一的端口
     //端口数字范围(1024,2^16-1)
     NSError * error = nil;
-    [_localUdpSocket bindToPort:6001 error:&error];
+    [_localUdpSocket bindToPort:9634 error:&error];
     
     if (error) {//监听错误打印错误信息
         NSLog(@"error:%@",error);
@@ -151,12 +163,13 @@
     NSString *ip = [FanToolBox fan_IPAdress];
     NSLog(@"host:%@",ip);
     //录制到本地,调试功能
-    fanFileHandle=[[FanFileHandle alloc]init];
-    [fanFileHandle fan_createFileHandle:@"1.mp4" audioFileName:@"2.aac"];
-    
-    _aacPlayer=[[FanAACPlayer alloc]init];
+    //    fanFileHandle=[[FanFileHandle alloc]init];
+    //    [fanFileHandle fan_createFileHandle:@"1.mp4" audioFileName:@"2.aac"];
+    //
+    //    _aacPlayer=[[FanAACPlayer alloc]init];
 }
 -(void)stopUdpSocket{
+    [self stopUDPBroad];
     [_localUdpSocket close];
 }
 
@@ -170,6 +183,7 @@
         NSLog(@"开启广播出错:%@",broadError);
     }else{
         _broadTimer=[NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(broadcast) userInfo:nil repeats:YES];
+        [_broadTimer fire];
     }
 }
 //通知广播
@@ -186,39 +200,53 @@
 }
 //发送广播数据
 -(void)broadcast{
-    //    [self sendMessage:@"我是广播数据！" toHost:@"255.255.255.255" port:6001];
-    Byte boardByte[]={0x00};
-    NSData *data=[NSData dataWithBytes:boardByte length:1];
-    [self sendData:data type:666 toHost:@"255.255.255.255" port:6001];
+    NSLog(@"发送广播");//192.168.1.255
+    [self sendData:nil type:666 toHost:@"255.255.255.255" port:9634];
+    //    [self sendMessage:@"我是广播数据！" toHost:@"255.255.255.255" port:9633];
+    //    Byte boardByte[]={0x00};
+    //    NSData *data=[NSData dataWithBytes:boardByte length:1];
+    //    [self sendData:data type:667 toHost:@"255.255.255.255" port:9633];
+    
+    //    [self sendMessage:@"我是谁啊" toHost:@"192.168.1.193" port:9633];
+    
 }
 
 
 
 
 -(void)sendMessage:(NSString *)message toHost:(NSString *)host port:(uint16_t)port{
-    //    NSData *data=[UdpSocketModel getDataWithMessage:message];
-    //    [_localUdpSocket sendData:data toHost:host port:port withTimeout:-1 tag:100];
-    [_localUdpSocket sendData:[message dataUsingEncoding:NSUTF8StringEncoding] toHost:host port:port withTimeout:-1 tag:100];
+    NSData *data=[message dataUsingEncoding:NSUTF8StringEncoding];
+    [self sendData:data type:UdpSocketTypeTxt toHost:host port:port];
 }
 -(void)sendByte:(Byte *)bytes length:(NSInteger)length type:(UInt16)type toHost:(NSString *)host port:(uint16_t)port{
     NSData *data=[NSData dataWithBytes:bytes length:length];
     [self sendData:data type:type toHost:host port:port];
 }
 -(void)sendData:(NSData *)data type:(UInt16)type toHost:(NSString *)host port:(uint16_t)port{
-    UInt16 tPage=data.length/UdpPackSize;
-    int t=data.length%(UdpPackSize)?1:0;
-    for (int i=0; i<tPage+t; i++) {
+    if (data==nil) {
         UdpSocketModel *socketModel=[[UdpSocketModel alloc]init];
         socketModel.type=type;
-        socketModel.length=UdpPackSize;
-        if (i==tPage&&t==1) {
-            socketModel.length=data.length%UdpPackSize;
-        }
-        socketModel.total=t+tPage;
-        socketModel.page=i+1;
-        socketModel.data=[[data subdataWithRange:NSMakeRange(i*UdpPackSize, socketModel.length)] mutableCopy];
+        socketModel.length=0;
+        socketModel.total=0;
+        socketModel.page=0;
         NSData *packData=[socketModel getData];
         [_localUdpSocket sendData:packData toHost:host port:port withTimeout:-1 tag:100];
+    }else{
+        UInt16 tPage=data.length/UdpPackSize;
+        int t=data.length%(UdpPackSize)?1:0;
+        for (int i=0; i<tPage+t; i++) {
+            UdpSocketModel *socketModel=[[UdpSocketModel alloc]init];
+            socketModel.type=type;
+            socketModel.length=UdpPackSize;
+            if (i==tPage&&t==1) {
+                socketModel.length=data.length%UdpPackSize;
+            }
+            socketModel.total=t+tPage;
+            socketModel.page=i+1;
+            socketModel.data=[[data subdataWithRange:NSMakeRange(i*UdpPackSize, socketModel.length)] mutableCopy];
+            NSData *packData=[socketModel getData];
+            [_localUdpSocket sendData:packData toHost:host port:port withTimeout:-1 tag:100];
+        }
     }
 }
 #pragma mark - GCDAsyncUdpSocketDelegate
@@ -229,31 +257,33 @@
     NSLog(@"发送失败Tag：%ld==%@",tag,error);
 }
 -(void)udpSocket:(GCDAsyncUdpSocket *)sock didReceiveData:(NSData *)data fromAddress:(NSData *)address withFilterContext:(id)filterContext{
+    //address当是广播数据时候，会接收两条，
+    //第一条28个字节【::ffff:192.168.1.126:9633】 第二条 16个字节【192.168.1.126:9633】
+    
     //接受数据
     NSString *ip = [GCDAsyncUdpSocket hostFromAddress:address];
     uint16_t port = [GCDAsyncUdpSocket portFromAddress:address];
+//    NSLog(@"收到UDP的数据: [%@:%d] leng=%ld  data:%@", ip, port,data.length,data);
     
-    //测试
-    //    NSString *message=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    //    NSLog(@"收到UDP的数据: [%@:%d] leng=%ld  %@", ip, port,data.length,message);
-    //
-    //    // 继续来等待接收下一次消息
-    //    [sock receiveOnce:nil];//这个是只接收一条
-    //
-    //
-    
-    
-    
-    NSLog(@"收到UDP的数据: [%@:%d] leng=%ld", ip, port,data.length);
-    if([_socketModel configWithData:data]){
-        if (_socketModel.isComplete) {
-            //完整包
-            [self analysis:[_socketModel copyModel]];
+    NSString *ipport=[NSString stringWithFormat:@"%@:%d", ip, port];
+    if ([ip hasPrefix:@"::ffff:"]) {
+        //广播数据的自己接受的第一条
+        
+    }else{
+        if([_socketModel configWithData:data address:ipport]){
+            if (_socketModel.isComplete) {
+                //完整包
+                _socketModel.ipAddress=ip;
+                _socketModel.port=port;
+                [self analysis:[_socketModel copyModel]];
+            }
         }
     }
+    
     // 继续来等待接收下一次消息
     [sock receiveOnce:nil];//这个是只接收一条
     
+    //    [self sendMessage:@"我收到了" toHost:ip port:port];
     
     
     
@@ -266,7 +296,7 @@
     //udpSocket关闭
     NSLog(@"udpSocket关闭");
 }
-
+NSTimeInterval timeInterval=0.0f;
 #pragma mark - 发送解析协议
 //解析每包数据
 -(void)analysis:(UdpSocketModel *)pack{
@@ -274,7 +304,13 @@
         case UdpSocketTypeTxt:
         {
             //文本，字符串
-            NSLog(@"接收UDP文本：%@",pack.message);
+            //            NSLog(@"接收UDP文本：%@",pack.message);
+            
+           NSTimeInterval tv=[NSDate timeIntervalSinceReferenceDate];
+            NSLog(@"%f",tv-timeInterval);
+            timeInterval=tv;
+            return;
+
         }
             break;
         case UdpSocketTypePng:
@@ -320,19 +356,19 @@
         case UdpSocketTypeVideoStream:
         {
             //video
-            if (fanFileHandle != NULL) {
-                [fanFileHandle fan_writeVideoData:pack.data];
-            }
+            //            if (fanFileHandle != NULL) {
+            //                [fanFileHandle fan_writeVideoData:pack.data];
+            //            }
         }
             break;
         case UdpSocketTypeAudioStream:
         {
             //audio
-            if (fanFileHandle != NULL) {
-                [fanFileHandle fan_writeAudioData:pack.data];
-            }
-            
-            [_aacPlayer fan_playAudioWithData:pack.data length:pack.data.length];
+            //            if (fanFileHandle != NULL) {
+            //                [fanFileHandle fan_writeAudioData:pack.data];
+            //            }
+            //
+            //            [_aacPlayer fan_playAudioWithData:pack.data length:pack.data.length];
             
             
         }
@@ -343,7 +379,7 @@
     }
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.receiveUdpSocketBlock) {
-            self.receiveUdpSocketBlock(pack.data, pack.message, pack.type);
+            self.receiveUdpSocketBlock(pack);
         }
     });
 }

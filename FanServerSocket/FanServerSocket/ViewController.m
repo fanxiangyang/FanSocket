@@ -40,11 +40,16 @@
         }
     }];
 
-    [[FanUdpSocketManager defaultManager]setReceiveUdpSocketBlock:^(NSData *data, NSString *message, UdpSocketType socketType) {
-        if (socketType==UdpSocketTypeJpg) {
-            self.sImageView.image=[[NSImage alloc]initWithData:data];
+    [[FanUdpSocketManager defaultManager]setReceiveUdpSocketBlock:^(UdpSocketModel *udpSocketModel) {
+//        NSLog(@"回调成功");
+        if (udpSocketModel.type==UdpSocketTypeJpg) {
+            self.sImageView.image=[[NSImage alloc]initWithData:udpSocketModel.data];
+        }else if (udpSocketModel.type==UdpSocketTypeTxt){
+            [[FanUdpSocketManager defaultManager]sendMessage:@"服务器回复文本Test！" toHost:udpSocketModel.ipAddress port:udpSocketModel.port];
         }
     }];
+     
+    
     
 //    FanSocketC *socketC=[[FanSocketC alloc]init];
 //    [socketC startC];
@@ -105,10 +110,12 @@
     [[FanSocketManager defaultManager]startSocket:port openNetServer:YES];
     //UDP
 //    [[FanUdpSocketManager defaultManager]startUdpSocket];
+//    [[FanUdpSocketManager defaultManager]startUDPBroad:1];
 }
 
 - (IBAction)stopClick:(id)sender {
     [[FanSocketManager defaultManager]stopSocket];
+    [[FanUdpSocketManager defaultManager]stopUdpSocket];
 }
 - (IBAction)sendClick:(id)sender {
     NSString *message=self.sendTextField.stringValue;

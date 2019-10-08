@@ -51,17 +51,20 @@ typedef NS_ENUM(UInt16,UdpSocketType){
 @property(nonatomic,assign)UInt16 index;//下标
 @property(nonatomic,strong)NSMutableData *data;
 
--(UdpSocketModel *)copyModel;
+
 //解析出来的字符串数据
 @property(nonatomic,copy)NSString *message;//文本信息UTF8编码
 @property(nonatomic,assign)BOOL isComplete;//一包数据是否完整切拼包完成
-
+@property(nonatomic,copy)NSString *address;//IP地址和端口号
+//存放IP数据
+@property(nonatomic,assign)UInt16 port;//端口号
+@property(nonatomic,strong)NSString *ipAddress;//IP地址
 
 -(void)clear;
-
+-(UdpSocketModel *)copyModel;
 
 //初始化解析数据包
--(BOOL)configWithData:(NSData *)data;
+-(BOOL)configWithData:(NSData *)data address:(NSString*)address;
 ///发送数据的拼接形式
 -(NSData *)getData;
 ///只发送含一包数据的文本形式
@@ -76,7 +79,7 @@ typedef NS_ENUM(UInt16,UdpSocketType){
 ///每包udp发送大小
 #define UdpPackSize (60*1024)
 
-typedef void(^FanReceiveUdpSocketBlock)(NSData *data,NSString *message, UdpSocketType socketType);
+typedef void(^FanReceiveUdpSocketBlock)(UdpSocketModel *udpSocketModel);
 
 @interface FanUdpSocketManager : NSObject<GCDAsyncUdpSocketDelegate>
 
