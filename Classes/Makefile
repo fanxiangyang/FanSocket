@@ -1,3 +1,4 @@
+#编译命令 'make'
 MYNAME = makefile
 CC = gcc
 objects = FanConfigC.o FanDataC.o FanSocketC.o Main.o
@@ -6,7 +7,7 @@ server: $(objects)
 
 
 
-
+#清理命令  'make clean'
 #比较稳健的clean做法，表示clean是一个伪目标(make clean)
 .PHONY: clean
 
